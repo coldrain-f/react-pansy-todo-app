@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap");
+
+body {
+  background: #d9d9d9;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+  width: 430px;
+  height: 800px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.title {
+  padding-top: 100px;
+}
+
+.todo-container {
+  /* background: #fafafa; */
+  margin: 0 auto;
+  width: 390px;
+}
+
+.todo-header {
+  height: 44px;
+  margin: 0 auto;
+  /* background: #d2d2d2; */
+  /* color: #828282; */
+  display: flex;
+  align-items: center;
+}
+
+.todo-header > div:nth-child(1) {
+  width: 100px;
+}
+.todo-header > div:nth-child(2) {
+  width: 200px;
+  text-align: left;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  height: 62px;
+  margin-top: 17px;
+}
+
+.todo > div:nth-child(1) {
+  width: 100px;
+}
+
+.todo > div:nth-child(2) {
+  width: 200px;
+  text-align: left;
+}
+
+/* 입력 창 */
+.input-box {
+  width: 390px;
+  margin: 0 auto;
+}
+
+button {
+  width: 390px;
+  height: 50px;
+}
