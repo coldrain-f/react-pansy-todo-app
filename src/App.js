@@ -2,18 +2,30 @@ import React, { Component } from "react";
 import "./App.css";
 
 export default class App extends Component {
-  todoData = [
-    {
-      id: 1,
-      title: "공부하기",
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "청소하기",
-      completed: false,
-    },
-  ];
+  // React State
+  // 필드명을 반드시 state 으로 해야 한다.
+  state = {
+    todoData: [
+      {
+        id: 1,
+        title: "공부하기",
+        completed: true,
+      },
+      {
+        id: 2,
+        title: "청소하기",
+        completed: false,
+      },
+    ],
+    value: "",
+  };
+
+  handleClick = (id) => {
+    const newTodoData = this.state.todoData.filter((todo) => todo.id !== id);
+    // 클래스 컴포넌트 상태 변경은?
+    // -> React State
+    this.setState({ todoData: newTodoData });
+  };
 
   render() {
     return (
@@ -29,7 +41,7 @@ export default class App extends Component {
               <div className="cursor-pointer">Delete All</div>
             </header>
 
-            {this.todoData.map((todo) => (
+            {this.state.todoData.map((todo) => (
               <div
                 key={todo.id}
                 className="todo bg-blue-400 text-white rounded-md font-medium"
@@ -42,7 +54,12 @@ export default class App extends Component {
                 </div>
                 {/* 데이터를 참조하려면 중괄호{}로 감싸줘야 한다. */}
                 <div>{todo.title}</div>
-                <div className="cursor-pointer">Delete</div>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => this.handleClick(todo.id)}
+                >
+                  Delete
+                </div>
               </div>
             ))}
           </div>
@@ -50,7 +67,7 @@ export default class App extends Component {
           {/* 입력 창 */}
           <div className="input-box text-left">
             <p className="mb-2 mt-16">
-              <label for="todo-input" className="font-semibold text-base">
+              <label htmlFor="todo-input" className="font-semibold text-base">
                 오늘의 할 일
               </label>
             </p>
