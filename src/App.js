@@ -38,7 +38,14 @@ export default class App extends Component {
                 <input type="checkbox"></input>
               </div>
               <div>오늘의 할 일</div>
-              <div className="cursor-pointer">Delete All</div>
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  this.setState({ todoData: [] });
+                }}
+              >
+                Delete All
+              </div>
             </header>
 
             {this.state.todoData.map((todo) => (
