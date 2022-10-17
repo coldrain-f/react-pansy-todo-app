@@ -33,6 +33,16 @@ export default class App extends Component {
     this.setState({ value: e.target.value });
   };
 
+  handleSubmit = () => {
+    const newTodo = {
+      id: Date.now(),
+      title: this.state.value,
+      completed: false,
+    };
+
+    this.setState({ value: "", todoData: [...this.state.todoData, newTodo] });
+  };
+
   render() {
     return (
       <div className="App">
@@ -96,6 +106,7 @@ export default class App extends Component {
           <button
             type="button"
             className="rounded-full mt-5 bg-blue-400 hover:bg-blue-500 text-slate-50"
+            onClick={this.handleSubmit}
           >
             등록
           </button>
