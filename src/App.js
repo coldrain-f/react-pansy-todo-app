@@ -27,6 +27,12 @@ export default class App extends Component {
     this.setState({ todoData: newTodoData });
   };
 
+  handleChange = (e) => {
+    // e.target.value에 사용자가 입력한 값이 저장되어 있다.
+    console.log("e", e.target.value);
+    this.setState({ value: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
@@ -81,6 +87,9 @@ export default class App extends Component {
             <input
               type="text"
               className="block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-400 focus:ring-sky-400 focus:ring-1 sm:text-sm"
+              placeholder="해야 할 일을 입력해주세요..."
+              value={this.state.value}
+              onChange={this.handleChange}
             ></input>
           </div>
 
