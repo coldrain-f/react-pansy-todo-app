@@ -43,6 +43,16 @@ export default class App extends Component {
     this.setState({ value: "", todoData: [...this.state.todoData, newTodo] });
   };
 
+    handleCompleteChange = (todoId) => {
+        const newTodoData = this.state.todoData.map((todo) => {
+            if (todo.id === todoId) {
+                todo.completed = !todo.completed;
+            }
+            return todo;
+        });
+        this.setState({todoData: newTodoData});
+    }
+
   render() {
     return (
       <div className="App">
@@ -73,10 +83,11 @@ export default class App extends Component {
                   <input
                     type="checkbox"
                     defaultChecked={todo.completed}
+                    onChange={() => this.handleCompleteChange(todo.id)}
                   ></input>
                 </div>
                 {/* 데이터를 참조하려면 중괄호{}로 감싸줘야 한다. */}
-                <div>{todo.title}</div>
+                <div style={{textDecoration: todo.completed ? "line-through" : "none"}}>{todo.title}</div>
                 <div
                   className="cursor-pointer"
                   onClick={() => this.handleClick(todo.id)}
